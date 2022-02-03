@@ -21,16 +21,22 @@ class FormActivity : AppCompatActivity() {
         val saveButton = findViewById<Button>(R.id.SaveButton)
 
         saveButton.setOnClickListener {
-            if(nameInput.text.toString() == ""){
-                nameInput.error = "Input a name"
-            }else if (emailInput.text.toString() == ""){
-                emailInput.error = "Input an email"
-            }else if(passwordInput.text.toString() == ""){
-                passwordInput.error = "Input a password"
-            }else if(passwordInputConfirm.text.toString() != passwordInput.text.toString()){
-                passwordInputConfirm.error = "Passwords do not match"
-            }else{
-                Toast.makeText(this, "Welcome, ${nameInput.text}, to the SignUpForm App", Toast.LENGTH_LONG).show()
+            when {
+                nameInput.text.toString() == "" -> {
+                    nameInput.error = "Input a name"
+                }
+                emailInput.text.toString() == "" -> {
+                    emailInput.error = "Input an email"
+                }
+                passwordInput.text.toString() == "" -> {
+                    passwordInput.error = "Input a password"
+                }
+                passwordInputConfirm.text.toString() != passwordInput.text.toString() -> {
+                    passwordInputConfirm.error = "Passwords do not match"
+                }
+                else -> {
+                    Toast.makeText(this, "Welcome, ${nameInput.text}, to the SignUpForm App", Toast.LENGTH_LONG).show()
+                }
             }
         }
 
